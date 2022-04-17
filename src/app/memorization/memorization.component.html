@@ -1,0 +1,11 @@
+<app-add-card (add)="addCard($event)"></app-add-card>
+
+<div class="cards">
+  <app-card
+    *ngFor="let c of cardsService.cards"
+    [card]="c"
+    [flipped]="c.id === flippedCardId"
+    (delete)="deleteCard($event)"
+    (flip)="flipCard($event)">
+  </app-card>
+</div>

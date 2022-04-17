@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+tui-wrapper[data-appearance='custom'] {
+  background: #ffdd2d;
+
+  &[data-state='hovered'] {
+    opacity: .8;
+  }
+}
+
+tui-wrapper[data-appearance='delete'] {
+  color: #999;
+
+  &[data-state='hovered'] {
+    background-color: #ededed;
+  }
+}
