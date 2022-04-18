@@ -9,21 +9,25 @@ import { Card } from 'src/shared/models/Card';
 })
 export class CardComponent {
   @Input() card!: Card;
-  @Input() flipped!: boolean;
-  
-  @Output()
-  flip = new EventEmitter<Card>();
+  @Input() flipped: boolean = false;
+
   @Output()
   delete = new EventEmitter<Card>();
+  @Output()
+  flip = new EventEmitter<Card>();
 
   flipCard = debounce(this.onCardFlip, 800, true)
+  deleted = false;
 
   deleteCard() {
+    this.deleted = true;
     this.delete.emit(this.card);
   }
 
   private onCardFlip(): void {
-    this.flip.emit(this.card);
+    if (!this.deleted) {
+      this.flip.emit(this.card);
+    }
   }
 
 }

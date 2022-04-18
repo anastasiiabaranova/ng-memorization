@@ -7,9 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TuiInputModule, TuiTextAreaModule } from '@taiga-ui/kit';
 import { TuiButtonModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { IMemorizationCardsApiServiceToken } from 'src/shared/interfaces/IMemorizationCardsApiService';
-import { MemorizationCardsMockApiService } from 'src/shared/services/memorization-cards-mock-api.service';
-
-
+import { MemorizationCardsApiService } from 'src/shared/services/memorization-cards-api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,12 +23,13 @@ import { MemorizationCardsMockApiService } from 'src/shared/services/memorizatio
     TuiTextAreaModule,
     TuiButtonModule,
     TuiTextfieldControllerModule,
+    HttpClientModule,
   ],
   exports: [
     MemorizationComponent
   ],
   providers: [
-    {provide: IMemorizationCardsApiServiceToken, useClass: MemorizationCardsMockApiService}
+    {provide: IMemorizationCardsApiServiceToken, useClass: MemorizationCardsApiService}
   ]
 })
 export class MemorizationModule { }

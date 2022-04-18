@@ -1,11 +1,20 @@
-<app-add-card (add)="addCard($event)"></app-add-card>
+<div class="main">
+  <app-add-card (add)="addCard($event)"></app-add-card>
 
-<div class="cards">
-  <app-card
-    *ngFor="let c of cardsService.cards"
-    [card]="c"
-    [flipped]="c.id === flippedCardId"
-    (delete)="deleteCard($event)"
-    (flip)="flipCard($event)">
-  </app-card>
+  <button
+    class="flip-all-button"
+    tuiButton
+    size="s"
+    (click)="closeAllCards()">
+    Перевернуть все карты
+  </button>
+  <div class="cards">
+    <app-card
+      *ngFor="let c of cardsService.cards"
+      [card]="c"
+      [flipped]="openCardsStorageService.isOpen(c.id!)"
+      (delete)="deleteCard($event)"
+      (flip)="flipCard($event)">
+    </app-card>
+  </div>
 </div>
