@@ -1,0 +1,40 @@
+<div class="flip-card" [ngClass]="{'flipped' : flipped}" (click)="flipCard()">
+
+  <div class="card">
+
+    <div class="card__side card__front">
+      <div class="card__front__name">
+        {{ card.name }}
+      </div>
+      <button
+        class="delete-button"
+        tuiIconButton
+        type="button"
+        appearance="delete"
+        icon="tuiIconCloseLarge"
+        size="xs"
+        (click)="deleteCard()">
+      </button>
+    </div>
+
+    <div class="card__side card__back">
+      <div class="card__back__name">
+        {{ card.name }}
+      </div>
+      <div class="card__back__description">
+        {{ card.description }}
+      </div>
+      <button
+        class="delete-button"
+        tuiIconButton
+        type="button"
+        appearance="delete"
+        icon="tuiIconCloseLarge"
+        size="xs"
+        (click)="deleteCard(); $event.stopPropagation();">
+      </button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,33 @@
+<form class="form" [formGroup]="form" (submit)="submit()">
+  <div class="form-title">Добавить карточку</div>
+
+  <div class="tui-form__row">
+    <tui-input
+      tuiTextfieldSize="s"
+      formControlName="name">
+      Название
+    </tui-input>
+  </div>
+
+  <div class="tui-form__row">
+    <tui-text-area
+      tuiTextfieldSize="m"
+      [expandable]="true"
+      formControlName="description">
+      Описание
+    </tui-text-area>
+  </div>
+
+  <div class="tui-form__row buttons">
+    <button
+      tuiButton
+      [disabled]="form.invalid"
+      class="tui-form__button"
+      size="s"
+      type="submit"
+      appearance="custom"
+    >
+      Добавить карточку
+    </button>
+  </div>
+</form>

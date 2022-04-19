@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 360px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 1px solid #cbcfd3;
+  border-radius: var(--tui-radius-s);
+
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipped .card {
+  transform: rotateY(180deg);
+}
+
+.card__front, .card__back {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card__side {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+}
+
+.card__front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__front__name {
+  color: #74a3c7;
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.card__back {
+  transform: rotateY(180deg);
+}
+
+.card__back__name {
+  line-height: 20px;
+  font-weight: bold;
+  color: #74a3c7;
+  font-size: 13px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.card__back__description {
+  max-height: 80%;
+  padding-right: 10px;
+  overflow: scroll;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
