@@ -17,17 +17,13 @@ export class CardComponent {
   flip = new EventEmitter<Card>();
 
   flipCard = debounce(this.onCardFlip, 800, true)
-  deleted = false;
 
   deleteCard() {
-    this.deleted = true;
     this.delete.emit(this.card);
   }
 
   private onCardFlip(): void {
-    if (!this.deleted) {
-      this.flip.emit(this.card);
-    }
+    this.flip.emit(this.card);
   }
 
 }

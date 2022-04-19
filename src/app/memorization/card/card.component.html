@@ -31,7 +31,7 @@
         appearance="delete"
         icon="tuiIconCloseLarge"
         size="xs"
-        (click)="deleteCard()">
+        (click)="deleteCard(); $event.stopPropagation();">
       </button>
     </div>
 
