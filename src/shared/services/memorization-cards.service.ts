@@ -25,13 +25,34 @@ export class MemorizationCardsService {
 
   addCard(card: Card): void {
     this.apiService.add(card).subscribe(() => {
-      this.initialize();
+      this._cards.push(card);
     });
   }
 
   deleteCard(card: Card): void {
     this.apiService.delete(card.id!).subscribe(() => {
-      this.initialize();
+      this._cards = this._cards.filter(c => c.id !== card.id);
+      localStorage.removeItem(card.id!);
     });
+  }
+
+  openCard(id: string): void {
+    localStorage.setItem(id, 'true');
+  }
+
+  closeCard(id: string): void {
+    localStorage.setItem(id, 'false');
+  }
+
+  flipCard(id: string): void {
+    if (this.isOpen(id)) {
+      this.closeCard(id);
+      return;
+    }
+    this.openCard(id);
+  }
+
+  isOpen(id: string): boolean {
+    return localStorage.getItem(id) === 'true';
   }
 }

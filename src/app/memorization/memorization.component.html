@@ -12,7 +12,7 @@
     <app-card
       *ngFor="let c of cardsService.cards"
       [card]="c"
-      [flipped]="openCardsStorageService.isOpen(c.id!)"
+      [flipped]="cardsService.isOpen(c.id!)"
       (delete)="deleteCard($event)"
       (flip)="flipCard($event)">
     </app-card>
